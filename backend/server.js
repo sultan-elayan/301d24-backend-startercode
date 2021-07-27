@@ -13,19 +13,19 @@ const {
     createItemController,
     updateItemController,
     deleteItemController,
-    retreiveItemController
+    retreiveItemsController
 }=require('./controllers/coffee.controller');
 
-mongoose.connect(`mongodb://127.0.0.1:27017/finalexam`, 
+mongoose.connect(`mongodb+srv://sultanElayan:_9999ssss@cluster0.cpjle.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, 
                 {useNewUrlParser: true, useUnifiedTopology:true});
 
 app.get('/',home);
 app.get('/fav-list',getFavoriteCoffee);
-app.get('/retreive',retreiveItemController);
+app.get('/retreive',retreiveItemsController);
 app.post('/create',createItemController);
 app.put('/update/:id',updateItemController);
 app.delete('/delete/:id',deleteItemController);
 
 app.listen(port, ()=>{
-    console.log('listening to port 8000');
+    console.log(`listening to port ${port}`);
 });
